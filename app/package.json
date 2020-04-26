@@ -1,0 +1,29 @@
+{
+  "name": "lying-app",
+  "version": "0.0.1",
+  "description": "Backend for lying",
+  "main": "lib/app.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "serve": "node ./lib/app.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^13.13.2",
+    "@types/uuid": "^7.0.3",
+    "logform": "^2.1.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/ioredis": "^4.14.9",
+    "express": "^4.17.1",
+    "express-sse": "^0.5.3",
+    "express-winston": "^4.0.3",
+    "ioredis": "^4.16.3",
+    "uuid": "^7.0.3",
+    "wikijs": "^6.0.1",
+    "winston": "^3.2.1",
+    "yaml": "^1.9.2"
+  }
+}
