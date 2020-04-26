@@ -1,29 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <main class="root-container">
+    <Game v-if="gameName !== null"/>
+    <Introduction v-else/>
+  </main>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import Game from './components/Game.vue';
+import Introduction from './components/Introduction.vue';
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 @Component({
   components: {
-    HelloWorld,
+    Introduction,
+    Game,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public gameName: string|null = null;
+}
 </script>
 
 <style lang="scss">
-#app {
+
+.root-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>
