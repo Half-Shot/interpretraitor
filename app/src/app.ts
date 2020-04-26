@@ -10,9 +10,9 @@ export class LyingApp {
     public async main(argv: string[]) {
         const config = new Config();
         log.info(`Starting app`);
-        const storage = new Datastore(config.redis.port, config.redis.host);
+        //const storage = new Datastore(config.redis.port, config.redis.host);
         const express = expressApp();
-        const apiController = new ApiController(storage);
+        const apiController = new ApiController(/*storage*/);
         express.use(expressLogger());
         express.use("/api", apiController.getRouter());
         // Host static content

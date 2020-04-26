@@ -28,7 +28,7 @@ const log = getLogger("Api");
 
 export class ApiController {
     private games: Map<string, Game> = new Map();
-    constructor(private storage: Datastore) { }
+    constructor() { }
 
     public getHealth(req: Request, res: Response<string>) {
         res.status(200).header("Content-Type", "text/plain").send("😎");
