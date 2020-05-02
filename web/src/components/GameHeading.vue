@@ -1,5 +1,5 @@
 <template>
-    <b-jumbotron header="Lying" lead="A game about bullshitting">
+    <b-jumbotron header="Interpretraitor" lead="A game about bullshitting to your friends">
         <p>Developed by <a href="#">Half-Shot</a> and <a href="#">Reydus</a></p>
     </b-jumbotron>
 </template>
@@ -24,6 +24,10 @@ export default class HelloWorld extends Vue {
     }
     a:visited {
         color: $color-secondary-1-2;
+    }
+
+    h1 {
+        font-weight: 500;
     }
 }
 </style>

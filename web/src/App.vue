@@ -1,7 +1,7 @@
 <template>
   <main class="root-container">
     <Game v-if="gameName !== null"/>
-    <Introduction v-else/>
+    <Introduction @start-game="onStartGame" v-else/>
   </main>
 </template>
 
@@ -25,6 +25,11 @@ Vue.use(IconsPlugin);
 })
 export default class App extends Vue {
   public gameName: string|null = null;
+
+  private onStartGame(gameName: string) {
+    console.log("Game Started", gameName);
+    this.gameName = gameName;
+  }
 }
 </script>
 
@@ -34,6 +39,6 @@ export default class App extends Vue {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
