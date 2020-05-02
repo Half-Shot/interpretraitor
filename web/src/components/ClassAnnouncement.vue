@@ -30,12 +30,15 @@ import SpyIcon from '../../icons/delapouite/spy.svg';
   }
 })
 export default class ClassAnnouncement extends Vue {
-    @Prop() private playerClass: "king"|"interpreter";
-    @Prop() private delay: number;
+    @Prop() private playerClass: "king"|"interpreter"|null = null;
+    @Prop() private delay: number = 0;
     private announceAnimation: "hidden"|"fade-in"|"fade-out" = "hidden";
     private announceSubtextAnimation: "hidden"|"fade-in" = "hidden";
 
     public mounted() {
+      if (this.playerClass === null) {
+        throw Error("playerClass cannot be null");
+      }
       setTimeout(() => {
         this.announceAnimation = "fade-in";
         setTimeout(() => {
