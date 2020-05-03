@@ -41,7 +41,12 @@ export class ApiController {
                 error: "Game not found",
             });
         }
-        const players = game.allPlayers.map((p) => ({ name: p.name, score: p.score, isMaster: p.isMaster}));
+        const players = game.allPlayers.map((p) => ({
+            name: p.name,
+            score: p.score,
+            isMaster: p.isMaster,
+            isDiscounted: p.isDiscounted,
+        }));
         return {
             name: game.name,
             players,

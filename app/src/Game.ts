@@ -9,6 +9,7 @@ interface GamePlayer {
     token: string;
     score: number;
     isMaster: boolean;
+    isDiscounted: boolean;
     stream?: SSE;
     currentArticle?: string;
 }
@@ -41,6 +42,7 @@ export class Game {
             name: nickname,
             token,
             isMaster: false,
+            isDiscounted: false,
             score: 0,
         });
         this.broadcast("new-player", {
@@ -91,6 +93,7 @@ export class Game {
         for (let i = 0; i < this.players.size; i++) {
             const player = this.players.get(keys[i])!;
             player.isMaster = (i === masterIndex);
+            player.isDiscounted = false;
             if (!this.activeArticle) {
                 player.currentArticle = articles[i];
             } else if (this.activeArticle === player.currentArticle) {
@@ -120,6 +123,9 @@ export class Game {
     public async pickPlayer(nickname: string) {
         const findPlayer = [...this.players.values()].find((p) => p.name === nickname)!;
         const gameMaster = [...this.players.values()].find((p) => p.isMaster)!;
+        if (findPlayer.isDiscounted) {
+            throw Error('Cannot pick dicounted player');
+        }
         findPlayer.score++;
         const correct = findPlayer?.currentArticle === this.activeArticle;
         const finished = this.roundCount === this.roundNumber;
@@ -142,7 +148,8 @@ export class Game {
     }
 
     public async discountPlayer(nickname: string) {
-        // Does nothing yet, really.
+        const findPlayer = [...this.players.values()].find((p) => p.name === nickname)!;
+        findPlayer.isDiscounted = true;
         this.broadcast("player-discounted", {
             nickname,
         });
