@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@types/ioredis": "^4.14.9",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-sse": "^0.5.3",
     "express-winston": "^4.0.3",
     "ioredis": "^4.16.3",
